@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QDir>
+#include <QFileDialog>
+#include <QDebug>
+
 #include "globals.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -8,6 +12,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->pB_add, SIGNAL(clicked()), this, SLOT(add()));
+    connect(ui->pB_remove, SIGNAL(clicked()), this, SLOT(remove()));
+    connect(ui->pB_save, SIGNAL(clicked()), this, SLOT(save()));
+
+    connect(ui->tB_pathFile, SIGNAL(clicked()), this, SLOT(setPathFile()));
 
     initialization();
 }
@@ -36,4 +46,50 @@ void MainWindow::initialization()
 
     QTreeWidgetItem* it_goals = new QTreeWidgetItem(ui->tW_categories);
     it_goals->setText(0, QS("Глобальные цели"));
+
+    QTreeWidgetItem* it_buys = new QTreeWidgetItem(ui->tW_categories);
+    it_buys->setText(0, QS("Список покупок"));
+}
+
+void MainWindow::add()
+{
+
+}
+
+void MainWindow::remove()
+{
+
+}
+
+void MainWindow::save()
+{
+
+}
+
+void MainWindow::setPathFile()
+{
+    QString path = ui->lE_pathFile->text();
+
+    if (path.isEmpty())
+        path = QDir::currentPath() + QS("/currentFile.txt");
+
+    ui->lE_pathFile->setText(QFileDialog::getOpenFileName(this, QS("Укажите путь к файлу"), path, tr("Text (*.txt *.*")));
+
+    curFile.setPath(ui->lE_pathFile->text());
+    qDebug() << "curFile =" << curFile.getPath();
+}
+
+void MainWindow::routine()
+{
+
+}
+
+void MainWindow::goals()
+{
+
+}
+
+void MainWindow::buys()
+{
+
 }

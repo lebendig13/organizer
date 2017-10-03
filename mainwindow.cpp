@@ -73,7 +73,7 @@ void MainWindow::setPathFile()
     if (path.isEmpty())
         path = QDir::currentPath() + QS("/currentFile.txt");
 
-    ui->lE_pathFile->setText(QFileDialog::getOpenFileName(this, QS("Укажите путь к файлу"), path, tr("Text (*.txt *.*")));
+    ui->lE_pathFile->setText(QFileDialog::getOpenFileName(this, QS("Укажите путь к файлу"), path, tr("Text (*.txt);; All files *.*")));
 
     curFile.setPath(ui->lE_pathFile->text());
     qDebug() << "curFile =" << curFile.getPath();

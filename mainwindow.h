@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTreeWidgetItem>
 
 #include "Current.h"
 
@@ -24,6 +25,8 @@ private slots:
 
     void setPathFile();
 
+    void showCategory(QModelIndex index);
+
 private:
     void initialization();
 
@@ -32,8 +35,9 @@ private:
     void buys();
 
 private:
-
     Current curFile;
+
+    QMap<QTreeWidgetItem*, QString> nameCategories;
 
 private:
     Ui::MainWindow *ui;

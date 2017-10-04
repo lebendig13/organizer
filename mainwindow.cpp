@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->tB_pathFile, SIGNAL(clicked()), this, SLOT(setPathFile()));
 
+    connect(ui->tW_categories, SIGNAL(clicked(QModelIndex)), this, SLOT(showCategory(QModelIndex)));
+
     initialization();
 }
 
@@ -32,23 +34,43 @@ void MainWindow::initialization()
     //set general categories
     ui->tW_categories->setHeaderLabel(QS("Категории"));
 
+    QString catName;
+
+    catName = QS("Рутина");
     QTreeWidgetItem* it_routine = new QTreeWidgetItem(ui->tW_categories);
-    it_routine->setText(0, QS("Рутина"));
+    it_routine->setText(0, catName);
+    nameCategories[it_routine] = catName;
 
+    catName = QS("Неделя");
     QTreeWidgetItem* it_week = new QTreeWidgetItem(ui->tW_categories);
-    it_week->setText(0, QS("Неделя"));
+    it_week->setText(0, catName);
 
+    catName = QS("Календарь");
     QTreeWidgetItem* it_calendar = new QTreeWidgetItem(ui->tW_categories);
-    it_calendar->setText(0, QS("Календарь"));
+    it_calendar->setText(0, catName);
 
+    catName = QS("Тематические списки");
     QTreeWidgetItem* it_types = new QTreeWidgetItem(ui->tW_categories);
-    it_types->setText(0, QS("Тематические списки"));
+    it_types->setText(0, catName);
 
+    catName = QS("Глобальные цели");
     QTreeWidgetItem* it_goals = new QTreeWidgetItem(ui->tW_categories);
-    it_goals->setText(0, QS("Глобальные цели"));
+    it_goals->setText(0, catName);
 
+    catName = QS("Список покупок");
     QTreeWidgetItem* it_buys = new QTreeWidgetItem(ui->tW_categories);
-    it_buys->setText(0, QS("Список покупок"));
+    it_buys->setText(0, catName);
+}
+
+void MainWindow::showCategory(QModelIndex index)
+{
+    foreach (QTreeWidgetItem* item, nameCategories.keys())
+    {
+        if (ui->tW_categories->indexWidget(index) != dynamic_cast<QWidget*>(item))
+            continue;
+
+        qDebug() << QS("Выбрана категория '%1'").arg(nameCategories[item]);
+    }
 }
 
 void MainWindow::add()

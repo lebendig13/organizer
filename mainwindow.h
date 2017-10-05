@@ -25,7 +25,7 @@ private slots:
 
     void setPathFile();
 
-    void showCategory(QModelIndex index);
+    void showCategory();
 
 private:
     void initialization();

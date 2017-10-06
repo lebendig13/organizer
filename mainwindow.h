@@ -27,6 +27,9 @@ private slots:
 
     void showCategory();
 
+    void showView();
+    void hideView();
+
 private:
     void initialization();
 

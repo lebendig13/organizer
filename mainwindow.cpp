@@ -21,6 +21,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->tW_categories, SIGNAL(itemSelectionChanged()), this, SLOT(showCategory()));
 
+    connect(ui->actionHide, &QAction::triggered, this, &MainWindow::hideView);
+    connect(ui->actionShow, &QAction::triggered, this, &MainWindow::showView);
+
     initialization();
 }
 
@@ -76,6 +79,16 @@ void MainWindow::showCategory()
 
         qDebug() << QS("Выбрана категория '%1'").arg(nameCategories[item]);
     }
+}
+
+void MainWindow::showView()
+{
+    ui->splitter->setSizes(QList<int>() << ui->splitter->width() << 0);
+}
+
+void MainWindow::hideView()
+{
+    ui->splitter->setSizes(QList<int>() << ui->splitter->width()/2 << ui->splitter->width()/2);
 }
 
 void MainWindow::add()

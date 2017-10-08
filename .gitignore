@@ -1,0 +1,13 @@
+/.directory
+/AnimatedSplitter.o
+/Current.o
+/Makefile
+/main.o
+/mainwindow.o
+/moc_AnimatedSplitter.cpp
+/moc_AnimatedSplitter.o
+/moc_mainwindow.cpp
+/moc_mainwindow.o
+/organizer
+/organizer.pro.user
+/ui_mainwindow.h

@@ -116,7 +116,7 @@ void MainWindow::setPathFile()
     ui->lE_pathFile->setText(QFileDialog::getOpenFileName(this, QS("Укажите путь к файлу"), path, tr("Text (*.txt);; All files *.*")));
 
     curFile.setPath(ui->lE_pathFile->text());
-    qDebug() << "curFile =" << curFile.getPath();
+//    qDebug() << "curFile =" << curFile.getPath();
 }
 
 void MainWindow::routine()

@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    Current.cpp
+    Current.cpp \
+    AnimatedSplitter.cpp
 
 HEADERS  += mainwindow.h \
     globals.h \
-    Current.h
+    Current.h \
+    AnimatedSplitter.h
 
 FORMS    += mainwindow.ui

@@ -117,6 +117,8 @@ void MainWindow::setPathFile()
 
     curFile.setPath(ui->lE_pathFile->text());
 //    qDebug() << "curFile =" << curFile.getPath();
+
+    //some changes for testing branches merging
 }
 
 void MainWindow::routine()

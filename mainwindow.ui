@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QSplitter" name="splitter">
+   <widget class="AnimatedSplitter" name="splitter">
     <property name="geometry">
      <rect>
       <x>6</x>
@@ -135,6 +135,14 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>AnimatedSplitter</class>
+   <extends>QSplitter</extends>
+   <header>AnimatedSplitter.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

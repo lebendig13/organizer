@@ -19,10 +19,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->tB_pathFile, SIGNAL(clicked()), this, SLOT(setPathFile()));
 
-    connect(ui->tW_categories, SIGNAL(itemSelectionChanged()), this, SLOT(showCategory()));
+//    connect(ui->tW_categories, SIGNAL(itemSelectionChanged()), this, SLOT(showCategory()));
 
     connect(ui->actionHide, &QAction::triggered, this, &MainWindow::hideView);
     connect(ui->actionShow, &QAction::triggered, this, &MainWindow::showView);
+
+    connect(ui->tW_categories, &QTreeWidget::currentItemChanged, this, [&]()
+    {
+        showCategory();
+    });
 
     initialization();
 }
@@ -83,12 +88,12 @@ void MainWindow::showCategory()
 
 void MainWindow::showView()
 {
-    ui->splitter->setSizes(QList<int>() << ui->splitter->width() << 0);
+    ui->splitter->moveHandleAt(ui->splitter->width()/2);
 }
 
 void MainWindow::hideView()
 {
-    ui->splitter->setSizes(QList<int>() << ui->splitter->width()/2 << ui->splitter->width()/2);
+    ui->splitter->moveHandleAt(ui->splitter->width());
 }
 
 void MainWindow::add()
@@ -116,7 +121,7 @@ void MainWindow::setPathFile()
     ui->lE_pathFile->setText(QFileDialog::getOpenFileName(this, QS("Укажите путь к файлу"), path, tr("Text (*.txt);; All files *.*")));
 
     curFile.setPath(ui->lE_pathFile->text());
-//    qDebug() << "curFile =" << curFile.getPath();
+//    qDebug() << "curFile =" << curFile.getPath(); //here was conflict
 
     //some changes for testing branches merging
 }
